@@ -2,17 +2,170 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light dark; }
-html, body, #__next { height: 100%; }
-html { scroll-behavior: smooth; }
-[id] { scroll-margin-top: 84px; }
+@layer base {
+  :root {
+    --color-primary: 22 163 74;
+    --color-secondary: 107 114 128;
+    --color-accent: 224 195 65;
+    --color-success: 22 163 74;
+    --color-warning: 224 195 65;
+    --color-error: 239 68 68;
+  }
 
-body { @apply bg-bg-light text-slate-900 dark:bg-bg-dark dark:text-slate-100; }
-.container-max { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
-.glass { @apply bg-white/60 dark:bg-white/5 backdrop-blur border border-white/20 dark:border-white/10; }
+  :root,
+  .dark {
+    --color-background: 12 12 13;
+    --color-foreground: 229 231 235;
+    --color-surface: 24 24 27;
+    --color-muted: 156 163 175;
+    --color-border: 39 39 42;
+  }
 
-.pricing-swiper-wrapper .swiper { padding: 0 0 24px 0; }
-.pricing-swiper-wrapper .swiper-button-next,
-.pricing-swiper-wrapper .swiper-button-prev { color: #93c5fd; }
-.pricing-swiper-wrapper .swiper-pagination-bullet { background:#64748b; opacity:.6; }
-.pricing-swiper-wrapper .swiper-pagination-bullet-active { background:#3b82f6; opacity:1; }
+  .light {
+    --color-background: 255 255 255;
+    --color-foreground: 17 24 39;
+    --color-surface: 248 250 252;
+    --color-muted: 107 114 128;
+    --color-border: 229 231 235;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    @apply font-sans;
+  }
+
+  body {
+    @apply antialiased;
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+    color: rgb(var(--color-foreground));
+  }
+  
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl font-bold; }
+  h2 { @apply text-3xl md:text-4xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border p-6 sm:p-8 transition-all duration-300;
+    background-color: rgb(var(--color-surface)) !important;
+    border-color: rgb(var(--color-border)) !important;
+  }
+  .card:hover {
+    border-color: rgb(var(--color-primary) / 0.5);
+    transform: translateY(-2px);
+  }
+  
+  .section {
+    @apply py-16 sm:py-20 md:py-24 px-4;
+  }
+  
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[rgb(var(--color-background))] text-sm;
+  }
+  
+  .btn-primary {
+    @apply text-white;
+    background-color: rgb(var(--color-primary));
+  }
+  .btn-primary:hover {
+    background-color: rgb(var(--color-primary) / 0.9);
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent text-themed-muted border;
+    border-color: rgb(var(--color-border));
+  }
+  .btn-secondary:hover {
+    border-color: rgb(var(--color-primary));
+    color: rgb(var(--color-primary));
+  }
+  
+  .text-themed-foreground { color: rgb(var(--color-foreground)); }
+  .text-themed-muted { color: rgb(var(--color-muted)); }
+  .bg-themed-surface { background-color: rgb(var(--color-surface)) !important; }
+  .border-themed-border { border-color: rgb(var(--color-border)); }
+
+  .input-themed {
+    @apply w-full px-4 py-2.5 rounded-md border bg-themed-surface focus:outline-none focus:ring-1 transition-colors;
+    border-color: rgb(var(--color-border));
+    color: rgb(var(--color-foreground));
+  }
+  .input-themed:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(var(--color-primary) / 0.3);
+    border-color: rgb(var(--color-primary));
+  }
+  .label-themed {
+    @apply block text-sm font-medium mb-1.5;
+    color: rgb(var(--color-muted));
+  }
+
+  .glass {
+    background-color: rgb(var(--color-surface) / 0.7);
+    border: 1px solid rgb(var(--color-border));
+    backdrop-filter: saturate(140%) blur(8px);
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+    @apply w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200;
+    background-color: rgb(var(--color-surface));
+    border: 1px solid rgb(var(--color-border));
+    color: rgb(var(--color-muted));
+  }
+  .swiper-button-next:hover, .swiper-button-prev:hover {
+    background-color: rgb(var(--color-primary));
+    border-color: rgb(var(--color-primary));
+    color: white;
+  }
+  .swiper-button-next::after, .swiper-button-prev::after { font-size: 1rem; }
+  .swiper-pagination-bullet { background-color: rgb(var(--color-border)); }
+  .swiper-pagination-bullet-active { background-color: rgb(var(--color-primary)); }
+}
+
+@layer utilities {
+  .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.parallax-bg {
+  position: fixed;
+  inset: 0;
+  background: transparent !important;
+  pointer-events: none;
+}
+
+/* SSR оверлей для мгновенного лоадера */
+#preload-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(135deg, #0B0D10, #111315);
+}
+html.skip-loader #preload-overlay { display: none; }
+
+* { -webkit-tap-highlight-color: transparent; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
