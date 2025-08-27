@@ -1,8 +1,5 @@
 export type Language = 'ru' | 'en' | 'uz';
 
-// ============================================================================
-// РУССКИЙ ЯЗЫК (RU) - Адаптированный под бизнес-контекст
-// ============================================================================
 const ru = {
     home: 'Главная',
     features: 'Функционал',
@@ -176,10 +173,6 @@ const ru = {
     footerPrivacy: 'Политика конфиденциальности',
     footerAddress: 'г. Ташкент, Узбекистан',
 };
-
-// ============================================================================
-// ENGLISH (EN) - Corporate & Tech-focused
-// ============================================================================
 const en: typeof ru = {
     home: 'Home',
     features: 'Features',
@@ -353,10 +346,6 @@ const en: typeof ru = {
     footerPrivacy: 'Privacy Policy',
     footerAddress: 'Tashkent, Uzbekistan',
 };
-
-// ============================================================================
-// UZBEK (UZ) - Professional & Modern
-// ============================================================================
 const uz: typeof ru = {
     home: 'Bosh sahifa',
     features: 'Funksional',
@@ -461,16 +450,16 @@ const uz: typeof ru = {
     securityBenefitComplianceDesc: 'Shaxsiy ma’lumotlarni himoya qilish to‘g‘risidagi qonunchilik talablariga rioya qilish.',
     securityBenefitAdminTitle: 'Boshqaruv',
     securityBenefitAdminDesc: 'Platformani qulay va oson lokal boshqarish.',
-    onPremiseDeploymentTitle: 'On-Premise Deployment',
-    onPremiseDeploymentDesc: 'Complete control over your infrastructure and data. Ideal for companies with strict security requirements.',
-    onPremiseFeature1: 'Maximum Control',
-    onPremiseFeature2: 'Integration with Internal IT Infrastructure',
-    onPremiseFeature3: 'Compliance with Internal Security Policies',
-    cloudDeploymentTitle: 'Cloud Deployment',
-    cloudDeploymentDesc: 'Quick setup and minimal maintenance costs. We handle all the technical aspects for you.',
-    cloudFeature1: 'Fast Implementation',
-    cloudFeature2: 'High Availability & Reliability',
-    cloudFeature3: 'Automatic Updates',
+    onPremiseDeploymentTitle: 'On-Premise joylashtirish (mahalliy serverlar)',
+    onPremiseDeploymentDesc: 'Infratuzilma va ma\'lumotlar ustidan to\'liq nazorat. Yuqori xavfsizlik talablariga ega kompaniyalar uchun ideal.',
+    onPremiseFeature1: 'Maksimal nazorat',
+    onPremiseFeature2: 'Ichki IT infratuzilma bilan integratsiya',
+    onPremiseFeature3: 'Ichki xavfsizlik siyosatlariga muvofiqlik',
+    cloudDeploymentTitle: 'Bulutli joylashtirish',
+    cloudDeploymentDesc: 'Tez o\'rnatish va minimal xizmat ko\'rsatish xarajatlari. Barcha texnik masalalarni biz hal qilamiz.',
+    cloudFeature1: 'Tez joriy etish',
+    cloudFeature2: 'Yuqori mavjudlik va ishonchlilik',
+    cloudFeature3: 'Avtomatik yangilanishlar',
     pricingTitle: 'O‘z tarifingizni tanlang',
     pricingSubtitle: 'Sizning biznesingiz bilan birga o‘sadigan moslashuvchan tarif rejalari.',
     activeUsers: 'faol foydalanuvchi',
@@ -501,7 +490,7 @@ const uz: typeof ru = {
     pricingFeaturePersonalManager: 'Shaxsiy menejer',
     tariffCorporate: 'Corporate',
     tariffUsers100plus: '100+',
-    tariffPriceCorporate: 'Individual',
+    tariffPriceCorporate: 'Shaxsiy',
     pricingFeatureUsers100plus: '100 dan ortiq foydalanuvchi',
     pricingFeatureVipSupport: 'VIP-qo‘llab-quvvatlash',
     turnkeyTitle: 'To‘liq joriy etish va ishga tushirish',

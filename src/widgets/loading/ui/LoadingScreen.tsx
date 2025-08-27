@@ -2,26 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useTheme } from '@/app/providers';
-
-const Logo = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#3b82f6"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
-    {...props}
-  >
-    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-    <path d="M10 9H8" />
-    <path d="M16 13H8" />
-    <path d="M16 17H8" />
-  </svg>
-);
+import { Logo } from '@/shared/ui/Logo';
 
 const palettes = {
   dark: {
@@ -49,7 +30,7 @@ interface LoadingScreenProps {
 const container: Variants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 0.25, ease: 'easeOut' } },
-  exit: { opacity: 0, transition: { duration: 0.45, ease: 'easeInOut' } },
+  exit: { opacity: 0, transition: { duration: 0.25, ease: 'easeInOut' } },
 };
 
 const letterVariants: Variants = {
@@ -77,25 +58,21 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const { theme } = useTheme();
   const pal = theme === 'dark' ? palettes.dark : palettes.light;
   const [isVisible, setIsVisible] = useState(true);
-  const [isFlashing, setIsFlashing] = useState(true);
+  const [isFlashing] = useState(false);
 
-  const SHOW_MS = 1600;
-  const FLASH_MS = 1000;
-  const EXIT_MS = 450;
+  const SHOW_MS = 800;
+  const EXIT_MS = 300;
 
   useEffect(() => {
     const el = document.getElementById('preload-overlay');
     if (el) el.remove();
 
-    const flashTimer = setTimeout(() => {
-      setIsFlashing(false);
-      const hideTimer = setTimeout(() => {
-        setIsVisible(false);
-        setTimeout(onComplete, EXIT_MS);
-      }, SHOW_MS);
-      return () => clearTimeout(hideTimer);
-    }, FLASH_MS);
-    return () => clearTimeout(flashTimer);
+    const hideTimer = setTimeout(() => {
+      setIsVisible(false);
+      setTimeout(onComplete, EXIT_MS);
+    }, SHOW_MS);
+
+    return () => clearTimeout(hideTimer);
   }, [onComplete]);
 
   return (
@@ -123,7 +100,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                     : { scale: 1.5, opacity: 1 }
                 }
               >
-                <Logo />
+                <Logo className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40" width={160} height={160} />
               </motion.div>
             </motion.div>
 

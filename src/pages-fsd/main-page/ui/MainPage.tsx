@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Hero } from '@/widgets/hero';
 import { DocumentManagement } from '@/features/document-management';
 import { ElectronicSignature } from '@/features/electronic-signature';
@@ -8,27 +7,12 @@ import { SecurityDeployment } from '@/features/security-deployment';
 import { PricingPlans } from '@/features/pricing-plans';
 import { ContactForm } from '@/features/contact-form';
 import { Dictionary } from '@/shared/lib/i18n';
-import { LoadingScreen } from '@/widgets/loading';
 
-export const MainPage: React.FC<{ dict: Dictionary }> = ({ dict }) => {
-  const [isLoading, setIsLoading] = useState(true);
+interface MainPageProps {
+  dict: Dictionary;
+}
 
-  useEffect(() => {
-    const hasVisited = sessionStorage.getItem('hasVisited');
-    if (hasVisited) {
-      setIsLoading(false);
-    }
-  }, []);
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-    sessionStorage.setItem('hasVisited', 'true');
-  };
-
-  if (isLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
-
+export const MainPage: React.FC<MainPageProps> = ({ dict }) => {
   return (
     <>
       <Hero dict={dict} />

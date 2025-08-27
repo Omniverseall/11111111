@@ -9,9 +9,9 @@ export const LanguageSwitcher: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const languages: { code: Language; name: string; flag: string }[] = [
-    { code: 'ru', name: 'Русский', flag: 'RU' },
-    { code: 'en', name: 'English', flag: 'USA' },
-    { code: 'uz', name: 'O\'zbekcha', flag: 'UZ' }
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'uz', name: "O'zbekcha", flag: '🇺🇿' },
   ];
 
   const currentLanguage = languages.find(lang => lang.code === language);
