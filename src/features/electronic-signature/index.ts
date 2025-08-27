@@ -1,1 +1,0 @@
-export { ElectronicSignature } from './ui/ElectronicSignature';

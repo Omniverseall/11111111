@@ -1,1 +1,0 @@
-export { DocumentManagement } from './ui/DocumentManagement';
