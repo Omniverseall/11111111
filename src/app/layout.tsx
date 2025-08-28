@@ -8,13 +8,16 @@ import { FirstVisitLoader } from '@/widgets/loading';
 export const metadata: Metadata = {
   title: 'EdoLine — электронный документооборот',
   description: 'Современная платформа электронного документооборота: подпись, согласование, автоматизация процессов.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://edoline.uz'),
   icons: {
     icon: [
-      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
       { url: '/logo.svg', type: 'image/svg+xml' },
     ],
     shortcut: '/favicon.png',
     apple: [
+      { url: '/favicon.png', sizes: '180x180', type: 'image/png' },
       { url: '/logo.svg', type: 'image/svg+xml' },
     ],
   },
@@ -35,12 +38,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" className={isFirstVisit ? '' : 'skip-loader'} suppressHydrationWarning>
       <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MZ646VLT');`}
+        </Script>
+        <Script id="structured-data" type="application/ld+json" strategy="beforeInteractive">
+          {`{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "EdoLine",
+            "url": "${process.env.NEXT_PUBLIC_SITE_URL || 'https://edoline.uz'}",
+            "logo": "${process.env.NEXT_PUBLIC_SITE_URL || 'https://edoline.uz'}/logo.svg",
+            "description": "Современная платформа электронного документооборота: подпись, согласование, автоматизация процессов.",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+998974311405",
+              "contactType": "customer service",
+              "email": "spacenetdev@gmail.com"
+            }
+          }`}
         </Script>
       </head>
       <body>
