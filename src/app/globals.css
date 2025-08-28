@@ -22,15 +22,15 @@
     --color-background: 0 0 0;
     --color-foreground: 255 255 255;
     --color-surface: 31 41 55;
-    --color-muted: 156 163 175;
+    --color-muted: 255 255 255;
     --color-border: 75 85 99;
   }
 
   .light {
     --color-background: 255 255 255;
-    --color-foreground: 17 24 39;
+    --color-foreground: 0 0 0;
     --color-surface: 249 250 251;
-    --color-muted: 107 114 128;
+    --color-muted: 0 0 0;
     --color-border: 209 213 219;
   }
 

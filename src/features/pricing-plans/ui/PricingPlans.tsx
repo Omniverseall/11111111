@@ -75,7 +75,7 @@ export const PricingPlans: React.FC<PricingPlansProps> = ({ onOrderClick }) => {
                   </ul>
                   <div className="mt-auto pt-4">
                     <button
-                      className="w-full btn btn-secondary py-3 text-lg"
+                      className="w-full btn btn-primary py-3 text-lg"
                       onClick={onOrderClick}
                     >
                       {t('pricingOrderBtn')}

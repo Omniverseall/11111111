@@ -14,9 +14,9 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/favicon.svg",
+      "src": "/favicon.png",
       "sizes": "32x32",
-      "type": "image/svg+xml"
+      "type": "image/png"
     }
   ]
 }

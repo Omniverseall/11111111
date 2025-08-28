@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   description: 'Современная платформа электронного документооборота: подпись, согласование, автоматизация процессов.',
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png' },
       { url: '/logo.svg', type: 'image/svg+xml' },
     ],
-    shortcut: '/favicon.svg',
+    shortcut: '/favicon.png',
     apple: [
       { url: '/logo.svg', type: 'image/svg+xml' },
     ],
